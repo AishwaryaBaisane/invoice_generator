@@ -23,13 +23,28 @@ class _FinalPageState extends State<FinalPage> {
               onTap: () {
                 setState(() {
                   total = 0;
+                  qtotal = 0;
+                  finalPrice =0;
                   double price = 0;
+                  double qty =0;
                   for (int i = 0; i < textControllerList.length; i++) {
                     price = double.parse(textControllerList[i].text);
+                    // qty = double.parse(textControllerList1[i].text);
                     total = total! + price;
                   }
+
+                  // }
+                  for (int i = 0; i <  textControllerList1.length; i++) {
+                    // price = double.parse(textControllerList[i].text);
+                    qty = double.parse(textControllerList1[i].text);
+                    qtotal = qtotal! + qty;
+
+                  }
+                  finalPrice = qtotal! * total!;
+
                 });
                 print(total);
+                print(qtotal);
               },
               child: Icon(
                 Icons.arrow_right_alt_rounded,
@@ -47,7 +62,6 @@ class _FinalPageState extends State<FinalPage> {
                 (index) => Column(
                   children: [
                     ListTile(
-                      title: Text('${txtQty.text}'),
                       subtitle: Text('${txtProName.text}'),
                     ),
                   ],
@@ -63,8 +77,18 @@ class _FinalPageState extends State<FinalPage> {
                   ],
                 ),
               ),
+              ...List.generate(
+                textControllerList1.length,
+                    (index) => Column(
+                  children: [
+                    ListTile(
+                      title: Text('${textController1.text}'),
+                    ),
+                  ],
+                ),
+              ),
               Text(
-                'Total is : ${total}',
+                'Total is : ${finalPrice}',
                 style: TextStyle(fontSize: 20),
               ),
             ],
@@ -76,3 +100,5 @@ class _FinalPageState extends State<FinalPage> {
 }
 
 double? total;
+double? qtotal;
+double? finalPrice ;

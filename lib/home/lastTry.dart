@@ -64,7 +64,7 @@ class _SkillPageState extends State<SkillPage> {
               (index) => Container(
                 alignment: Alignment.center,
                 margin: EdgeInsets.all(10),
-                height: height * 0.2 - 50,
+                height: height * 0.3-50,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(15),
@@ -130,7 +130,83 @@ class _SkillPageState extends State<SkillPage> {
                           ),
                         ),
                       ),
-                    )
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            ...List.generate(
+              textControllerList1.length,
+                  (index) => Container(
+                alignment: Alignment.center,
+                margin: EdgeInsets.all(10),
+                height: height * 0.3-50,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Column(
+                  children: [
+                    Container(
+                      height: height * 0.1 - 50,
+                      width: width * 400,
+                      decoration: BoxDecoration(
+                        color: Color(0xff8596a0),
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(15),
+                          topRight: Radius.circular(15),
+                        ),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(7),
+                            child: Text(
+                              ' qty ',
+                              style:
+                              TextStyle(color: Colors.white, fontSize: 17),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 10),
+                            child: GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  s--;
+                                  textControllerList1.removeAt(index);
+                                });
+                              },
+                              child: Icon(
+                                Icons.delete,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                          // SizedBox(width: 5,)
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      height: height * 0.1 - 22,
+                      width: 370,
+                      child: TextFormField(
+                        controller: textControllerList1[index],
+                        decoration: InputDecoration(
+                          hintText: 'Price',
+                          enabledBorder: OutlineInputBorder(),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.black,
+                              width: 2,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -188,14 +264,6 @@ class _SkillPageState extends State<SkillPage> {
                         height: 10,
                       ),
                       buildTextFormField(
-                          'Qty', ControllerList[index].txtQty!),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      buildTextFormField(
                           'ProName', ControllerList[index].txtProName!),
                       SizedBox(
                         height: 10,
@@ -215,9 +283,9 @@ class _SkillPageState extends State<SkillPage> {
             TextEditingController textController = TextEditingController();
             textControllerList.add(textController);
 
-            ControllerList.add(ControllerModel(
-                txtProName: txtProName,
-                txtQty: txtQty));
+            TextEditingController textController1 = TextEditingController();
+            textControllerList1.add(textController1);
+
           });
         },
         child: Container(
@@ -268,29 +336,28 @@ Widget buildTextFormField(String label, TextEditingController controller) {
 
 int s = 0;
 double Skills = 0;
+
 TextEditingController textController = TextEditingController();
 List<TextEditingController> textControllerList = [textController];
 
+TextEditingController textController1 = TextEditingController();
+List<TextEditingController> textControllerList1 = [textController1];
 
 
 
 class ControllerModel {
-  TextEditingController? txtQty;
   TextEditingController? txtProName;
 
 
   ControllerModel(
-      {this.txtProName, this.txtQty, });
+      { this.txtProName, });
 }
 
 List<ControllerModel> ControllerList = [
   ControllerModel(
-      txtQty: txtQty,
       txtProName: txtProName,
+
      )
 ];
-
-
-
-TextEditingController txtQty = TextEditingController();
+// TextEditingController txtQty = TextEditingController();
 TextEditingController txtProName = TextEditingController();
