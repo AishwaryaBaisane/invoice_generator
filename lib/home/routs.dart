@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'billScreen.dart';
+import 'final.dart';
 import 'homeScreen.dart';
-import 'homeScreen2.dart';
+import 'lastTry.dart';
 
 class AppRoutes {
 
@@ -10,8 +11,8 @@ class AppRoutes {
   {
     '/home' : (context) => const HomeScreen(),
     '/bill' : (context) => const BillScreen(),
-    '/' : (context) => const Education(),
-    // '/bill2' :(context) =>
-    // '/product' : (context) => const ,
+    // '/edu' : (context) => const Education(),
+    '/' : (context) => const SkillPage(),
+    '/final' : (context) => const FinalPage(),
   };
 }
