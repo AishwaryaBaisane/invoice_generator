@@ -1,4 +1,4 @@
-# invoice_ganrate
+# invoice_ganrater
 
 <p>
    <img src = "https://github.com/AishwaryaBaisane/invoice_generator/assets/149373597/22aaa6f7-9c0e-4ebc-8a9c-b48d852f4a8a" height = 25% width = 25%>
