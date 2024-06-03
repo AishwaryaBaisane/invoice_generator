@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:invoice_janrate/Invoice_Ganrator/home.dart';
-
 import '../utils/globalVariabal.dart';
 
 class detailScreen extends StatefulWidget {

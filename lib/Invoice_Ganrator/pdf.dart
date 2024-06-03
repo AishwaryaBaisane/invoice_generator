@@ -2,13 +2,10 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:invoice_janrate/Invoice_Ganrator/home.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
-
 import '../utils/globalVariabal.dart';
-import 'detail.dart';
 
 class PdfScreen extends StatefulWidget {
   const PdfScreen({super.key});

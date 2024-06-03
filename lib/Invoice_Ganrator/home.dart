@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../utils/globalVariabal.dart';
 
 class InvoiceGenerator extends StatefulWidget {
