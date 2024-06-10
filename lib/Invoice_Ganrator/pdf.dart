@@ -6,6 +6,7 @@ import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
 import '../utils/globalVariabal.dart';
+import 'home.dart';
 
 class PdfScreen extends StatefulWidget {
   const PdfScreen({super.key});
@@ -53,17 +54,17 @@ Future<Uint8List> genratepdf() async {
                 ],
               ),
               ...List.generate(
-                ItemList.length,
+                items.length,
                 (index) => pw.TableRow(
                   children: [
                     pw.Padding(
                       padding: const pw.EdgeInsets.all(10),
-                      child: pw.Text('${ItemList[index].txt.toString()}',
+                      child: pw.Text('${items[index]}',
                           style: pw.TextStyle(fontSize: 20)),
                     ),
                     pw.Padding(
                       padding: const pw.EdgeInsets.all(10),
-                      child: pw.Text('\$${ItemList[index].txtPrice}',
+                      child: pw.Text('\$${price[index]}',
                           style: pw.TextStyle(fontSize: 20)),
                     ),
                   ],
@@ -94,7 +95,7 @@ Future<Uint8List> genratepdf() async {
                   ),
                   pw.Padding(
                     padding: const pw.EdgeInsets.all(10),
-                    child: pw.Text('\$${DataList[selectIndex].price + 418.10}',
+                    child: pw.Text('\$${total + 418.0}',
                         style: pw.TextStyle(fontSize: 20)),
                   ),
                 ],
@@ -116,7 +117,7 @@ Future<Uint8List> genratepdf() async {
             style: const pw.TextStyle(fontSize: 15),
           ),
           pw.Divider(),
-          pw.SizedBox(height: 30),
+          // pw.SizedBox(height: 10),
           pw.Table(
             border: pw.TableBorder.all(color: PdfColors.black),
             children: [
@@ -148,7 +149,7 @@ Future<Uint8List> genratepdf() async {
                   pw.Padding(
                     padding: pw.EdgeInsets.all(5),
                     child: pw.Text(
-                      '\$${DataList[selectIndex].price + 418.10}',
+                      '\$${total + 418.0}',
                       style: const pw.TextStyle(
                           fontSize: 20, color: PdfColors.black),
                     ),

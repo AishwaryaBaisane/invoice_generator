@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../utils/globalVariabal.dart';
+import 'home.dart';
 
 class detailScreen extends StatefulWidget {
   const detailScreen({super.key});
@@ -15,19 +16,25 @@ class _detailScreenState extends State<detailScreen> {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.blue,
+          leading: IconButton(
+            onPressed: () {
+              setState(() {
+                items.clear();
+                price.clear();
+                total = 0;
+              });
+              Navigator.of(context).pop();
+            },
+            icon: Icon(
+              Icons.arrow_back_ios_outlined,
+              color: Colors.white,
+            ),
+          ),
           centerTitle: true,
           title: Text(
             '${DataList[selectIndex].data}',
             style: TextStyle(color: Colors.white),
           ),
-          leading: GestureDetector(
-              onTap: () {
-                Navigator.of(context).pop();
-              },
-              child: Icon(
-                Icons.arrow_back_ios,
-                color: Colors.white,
-              )),
         ),
         body: Column(
           children: [
@@ -40,7 +47,10 @@ class _detailScreenState extends State<detailScreen> {
                 children: [
                   const Text(
                     'Customer',
-                    style: TextStyle(fontSize: 25, color: Colors.black87),
+                    style: TextStyle(
+                        fontSize: 25,
+                        color: Colors.black87,
+                        fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
                     width: 100,
@@ -48,7 +58,7 @@ class _detailScreenState extends State<detailScreen> {
                   SizedBox(
                     width: 162,
                     child: Text(
-                      DataList[selectIndex].name,
+                      '${customer}',
                       textAlign: TextAlign.center,
                       style:
                           const TextStyle(fontSize: 25, color: Colors.black45),
@@ -72,19 +82,28 @@ class _detailScreenState extends State<detailScreen> {
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             ...List.generate(
-              ItemList.length,
+              items.length,
               (index) => ListTile(
-                title: Text('${ItemList[index].txt}'),
-                trailing: Text('${ItemList[index].txtPrice}'),
+                title: Text(
+                  '${items[index]}',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                trailing: Text(
+                  '${price[index]}',
+                  style: TextStyle(fontSize: 20),
+                ),
               ),
             ),
             ListTile(
               title: const Text(
                 'Total',
-                style: TextStyle(fontSize: 30, color: Colors.black45),
+                style: TextStyle(
+                    fontSize: 30,
+                    color: Colors.black45,
+                    fontWeight: FontWeight.bold),
               ),
               trailing: Text(
-                '${DataList[selectIndex].price}',
+                '${total.round()}',
                 style: const TextStyle(fontSize: 30, color: Colors.black45),
               ),
             ),
@@ -106,4 +125,3 @@ class _detailScreenState extends State<detailScreen> {
     );
   }
 }
-
